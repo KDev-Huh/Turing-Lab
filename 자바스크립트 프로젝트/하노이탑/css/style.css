@@ -1,0 +1,58 @@
+body{
+    width: 1000px;
+}
+header{
+    background-color: rgb(109, 182, 235);
+}
+.navStyle{
+    height: 40px;
+    background-color: blue;
+}
+nav input{
+    margin-top: 10px;
+}
+#board .label{
+    background-color: rgb(109, 182, 235);
+    height: 50px;
+    padding-top: 0.1px;
+}
+#ground{
+    background-color: bisque;
+    height: 420px;
+    padding: 10px;
+    display: flex;
+    justify-content: space-around; 
+}
+.ground .tower{
+    background-image: url("../image/tower.svg");
+    background-color: rgb(140, 140, 140);
+    height: 400px;
+    width: 260px;  
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+}
+#msgSuccess{
+    display: none;
+}
+
+footer{
+    height: 30px;
+    background-color: rgb(109, 182, 235);
+}
+
+.disc {
+    display: block;
+
+    height: 20px;
+    background-color: crimson;
+    margin: 5px;
+    border-radius: 15px;
+    cursor:pointer;
+    z-index: 0;
+}
+
+
+.success {
+    display: block;
+}
