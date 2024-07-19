@@ -10,12 +10,12 @@
     <header>
         IMAGE SLIDER
     </header>
-    <main class="board">
-        <div class="slider-box">
-            <span class="btn-prev">prev</span>
-            <div class="slider">
-                <div class="files">
-                    <div class="file">
+    <main class="board">        <!-- 사진을 보여주는 공간의 틀(회색부분) -->
+        <div class="slider-box">    <!-- 버튼과 사진을 보여주는 공간을 묶었다 -->
+            <span class="btn-prev">prev</span>  <!-- 전 사진 보기버튼 -->
+            <div class="slider">        <!-- 사진을 보여주는 영역 -->
+                <div class="files">        <!-- 사진을 묶은 객체 -->
+                    <div class="file">      <!-- 사진 하나하나 -->
                         <img class="thumbnail" src="img/image01.png">
                     </div>
                     <div class="file">
@@ -33,11 +33,11 @@
                     <div class="file">
                         <img class="thumbnail" src="img/image06.png">
                     </div>
-                </div>
+                </div>      <!-- 자동이동 버튼 -->
                 <div id="autoplay" class="autoplay"></div>
             </div>
-            <span class="btn-next">next</span>
-            <ul class="pagination"></ul>
+            <span class="btn-next">next</span>     <!-- 다음사진 보기 버튼 -->
+            <ul class="pagination"></ul>        <!-- 사진추가하는 부분 -->
         </div>
         <script src="./js/script.js"></script>
     </main>
