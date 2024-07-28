@@ -1,0 +1,40 @@
+<!DOCTYPE html> 
+<html lang="kr">
+    <head>
+        <title>
+            Drag & Drop Hanoi Tower
+        </title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="./style/style.css">
+        <script src="./js/script.js"></script>
+    </head>
+    
+    <body>
+        <header class="title">            
+            <div>Drag & Drop Hanoi Tower</div>
+        </header>
+
+        <nav class="navStyle">            
+            <input type="button" value="Add Disk" onclick="addDisk()"/>&nbsp;
+            <input type="button" value="Reset" onclick="refresh()" />
+        </nav>
+        <main id="board">
+            <section id="moveLabel" class="label">
+                <p>
+                    <span>Move: </span>
+                    <span id="moveCount"></span>
+                </p>                
+            </section>
+            <section id="ground" class="ground">
+                <div id="towerA" class="tower"></div>
+                <div id="towerB" class="tower"></div>
+                <div id="towerC" class="tower"></div>
+                <div id="msgSuccess" class="success">Congratulation</div>
+            </section>            
+        </main>
+        <footer>
+            Turing Lab.
+        </footer>
+    </body>
+</html>

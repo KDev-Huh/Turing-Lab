@@ -2,15 +2,29 @@ let discCount = 0;
 let move = 0;
 let moveLabel = undefined;
 
+function discEnter()
+{
+    if (this.id === this.parentNode.lastElementChild.id)
+    {
+        this.classList.add("dragging");                     
+    }
+}
+
+function discLeave()
+{
+    this.classList.remove("dragging");
+}
+
 function dragStart(e) {
     e.dataTransfer.setData('text/plain', this.id);
+    this.classList.add("dragging");   //이건 없어도 실행됨
     setTimeout(() => {
         this.style.display = 'none';
     }, 0);
 }
 
 function dragEnd(e){
-    this.classList.remove("dragging");
+    this.classList.remove("dragging");  //이건 없어도 실행됨
     setTimeout(() => {
         this.style.display = 'block';
     }, 0);
@@ -47,12 +61,31 @@ document.addEventListener('DOMContentLoaded', (event) => {
                 move++;
                 moveLabel.textContent = move.toString();
                 
+                towerReset();
                 isSuccess();
             }
         });
     });
     
 });
+
+function towerReset()
+{   
+    const towers = document.querySelectorAll('.tower');
+  
+    towers.forEach((tower) => {
+        tower.childNodes.forEach((disc) => {
+            disc.setAttribute('draggable', 'false');
+        });
+
+        /*
+            If the tower.lastElementChild is null, the attribute setAttribute is not existed.
+        */
+
+        if(tower.lastElementChild !== null)
+            tower.lastElementChild.setAttribute('draggable', 'true');
+    });
+}
 
 
 function addDisk(){
@@ -73,6 +106,8 @@ function addDisk(){
 
     disc.ondragstart = dragStart;   //드레그가 시작되면 dragStart를 시작
     disc.ondragend = dragEnd;
+    disc.onmouseenter = discEnter;
+    disc.onmouseleave = discLeave;
 
     towerReset();
 }
@@ -85,6 +120,7 @@ function refresh(){
     });
 
     move = discCount = 0;
+    moveLabel.textContent = move.toString();
 
     let msgSuccess = document.getElementById('msgSuccess');
     msgSuccess.style.display = 'none';

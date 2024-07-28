@@ -1,3 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Anton+SC&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Anton+SC&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap');
+
 body{
     width: 1000px;
 }
@@ -52,7 +56,25 @@ footer{
     z-index: 0;
 }
 
+.disc:hover {
+    background-color: violet;
+}
+
+.dragging {
+    cursor: grab;
+    background-color:azure;
+    visibility: visible;
+}
+
 
 .success {
-    display: block;
+    font-family: "Anton SC", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 3em;
+    z-index: 0;
+    position: absolute;
+    color:crimson;
+    display: none;
+    text-shadow: 0 0 10px #fd548d, 0 0 20px #fd6698, 0 0 30px #fd7aa6, 0 0 40px #fc90b4;
 }
