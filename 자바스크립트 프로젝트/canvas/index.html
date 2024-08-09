@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>clock</title>
+    <style>
+        body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+        canvas{
+            background-color: #fff;
+            border-radius: 50%;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+<body>
+    <canvas id="myCanvas" width="400" height="400">
+    </canvas>
+
+    <script>
+        const canvas = document.getElementById("myCanvas");
+        const ctx = canvas.getContext("2d");
+        ctx.translate(200, 200);
+
+        const h = 200;
+        function face(ctx){
+            ctx.beginPath();
+            ctx.lineWidth = 10;
+            ctx.strokeStyle = '#333';
+            ctx.arc(0, 0, 190, 0, 2 * Math.PI);
+            ctx.stroke();
+
+           // ctx.beginPath();
+            ctx.fillStyle = 'white';
+            ctx.fill();
+
+            ctx.beginPath();
+            ctx.arc(0, 0, 15, 0, 2 * Math.PI);
+            ctx.fillStyle = '#333';
+            ctx.fill();
+        }
+
+        function number(ctx){
+            ctx.textBaseline = 'middle';
+            ctx.textAlign = 'center';
+
+            const numbers = ['3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '1', '2'];
+            ctx.font = '30px Arial';
+
+            for(let i = 0 ; i < 12 ; i++)
+            {
+                let x = h * 0.8 * Math.cos(i *  Math.PI / 6);
+                let y = h * 0.8 * Math.sin(i * Math.PI / 6);
+               
+                ctx.fillText(numbers[i], x, y);
+            }
+        }
+
+        function drawTime(ctx){
+            const kst = new Date();
+
+            const hour = kst.getHours();
+            const minute = kst.getMinutes();
+            const second = kst.getSeconds();
+
+            const secondAngle = ((second*6)+270) * Math.PI / 180;
+            const minuteAngle = ((minute*6)+270) * Math.PI / 180;
+            const hourAngle = (((hour % 12) * 30) + 270) * Math.PI / 180;
+
+            drawHand(ctx, hourAngle, h * 0.5, 8);
+            drawHand(ctx, minuteAngle, h * 0.8, 8);
+            drawHand(ctx, secondAngle, h , 5, 'red');
+        }
+
+        function drawHand(ctx, angle, long, width, color = '#333'){
+            ctx.beginPath();
+
+            let x = long * 0.85 * Math.cos(angle);
+            let y = long * 0.85 * Math.sin(angle);
+
+            ctx.lineWidth = width;
+            ctx.moveTo(0, 0);
+            ctx.lineTo(x, y);
+            ctx.strokeStyle = color;
+            ctx.stroke();
+        }
+
+        function drawClock()
+        {
+            face(ctx);
+            number(ctx);
+            drawTime(ctx);
+        }
+
+        setInterval(drawClock, 1000);
+        
+        
+        
+    </script>
+</body>
+</html>
