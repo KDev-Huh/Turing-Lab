@@ -40,3 +40,8 @@ span{
     display: flex;
     justify-content: space-around;
 }
+#wordBook{
+    width: 300px;
+    height: auto;
+    border: 1px solid black;
+}

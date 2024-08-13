@@ -3,13 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Screen_on_Running</title>
+    <title>단어장</title>
     <link rel="stylesheet" href="style/style.css">
 </head>
 <body>
     <nav>
         <input type="button" value="단어추가" id="add">
     </nav>
+    <div id="wordBook">
+        <h3>단어장</h3>
+        <p id="inputWord"></p>
+    </div>
     <div id="addWord">
         <form>
             <div id="outBox">
@@ -21,8 +25,8 @@
                 <textarea id="meaning"></textarea>
                 <div id="goBox">
                     <div id="go">
-                        <input type="button" value="Append">
-                        <input type="button" value="Cancel">
+                        <input type="button" value="Append" id="addBu">
+                        <input type="button" value="Cancel" id="canBu">
                     </div>
                 </div>
             </div>
