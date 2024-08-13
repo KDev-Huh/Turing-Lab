@@ -17,8 +17,8 @@ for(let i=0;i<16;i++){
 }
 
 // 무조건 풀수있는 랜덤
-function shuffle(){
-    let loop=10;
+function shuffle(number){
+    let loop=Number(number);
     let sw = 0;
     while(loop)
     {
@@ -79,45 +79,58 @@ function move(tile){
     emptyTile = tile;
 }
 
-shuffle();
-for(let i=0;i<16;i++){
-    const tile = document.createElement("div");
-    tile.className = "tile";
-    tile.style.backgroundPosition = tiles[ran[i]];
-    tile.addEventListener("click", (e)=>{
-        if(i-4==emp && i>=4){
-            move(tile);
-            emp=i;
-            [ran[emptyIdx], ran[i]] = [ran[i], ran[emptyIdx]];
-            emptyIdx = i;
-        }
-        else if(i+4==emp && i<=11){
-            move(tile);
-            emp=i;
-            [ran[emptyIdx], ran[i]] = [ran[i], ran[emptyIdx]];
-            emptyIdx = i;
-        }
-        else if(i-1==emp && i%4!=0){
-            move(tile);
-            emp=i;
-            [ran[emptyIdx], ran[i]] = [ran[i], ran[emptyIdx]];  
-            emptyIdx = i;
-        }
-        else if(i+1==emp && (i+1)%4!=0){
-            move(tile);
-            emp=i;
-            [ran[emptyIdx], ran[i]] = [ran[i], ran[emptyIdx]];
-            emptyIdx = i;
-        }
-        setTimeout(complete, 1);
-    });
-    if(ran[i] ==15){
-        tile.className = "empty";
-        tile.classList.add("tile");
-        emptyTile = tile;
-        emptyIdx = i;
+const start = document.getElementById("shuffle");
+start.addEventListener('click',()=>{
+    const number = document.getElementById("number");
+    if(number.value=='0')
+        alert("0보다 큰수를 입력해주세요");
+    else{
+        shuffle(number.value);
+        createPuzzle();
     }
-    puzzle.appendChild(tile);
+});
+
+function createPuzzle(){
+    puzzle.innerHTML = "";
+    for(let i=0;i<16;i++){
+        const tile = document.createElement("div");
+        tile.className = "tile";
+        tile.style.backgroundPosition = tiles[ran[i]];
+        tile.addEventListener("click", (e)=>{
+            if(i-4==emp && i>=4){
+                move(tile);
+                emp=i;
+                [ran[emptyIdx], ran[i]] = [ran[i], ran[emptyIdx]];
+                emptyIdx = i;
+            }
+            else if(i+4==emp && i<=11){
+                move(tile);
+                emp=i;
+                [ran[emptyIdx], ran[i]] = [ran[i], ran[emptyIdx]];
+                emptyIdx = i;
+            }
+            else if(i-1==emp && i%4!=0){
+                move(tile);
+                emp=i;
+                [ran[emptyIdx], ran[i]] = [ran[i], ran[emptyIdx]];  
+                emptyIdx = i;
+            }
+            else if(i+1==emp && (i+1)%4!=0){
+                move(tile);
+                emp=i;
+                [ran[emptyIdx], ran[i]] = [ran[i], ran[emptyIdx]];
+                emptyIdx = i;
+            }
+            setTimeout(complete, 1);
+        });
+        if(ran[i] ==15){
+            tile.className = "empty";
+            tile.classList.add("tile");
+            emptyTile = tile;
+            emptyIdx = i;
+        }
+        puzzle.appendChild(tile);
+    }
 }
 
 function complete(){
