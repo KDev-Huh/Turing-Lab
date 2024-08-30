@@ -1,0 +1,36 @@
+#board {
+    display: flex;
+    flex-direction: column;
+}
+
+.cell {
+    width: 200px;
+    height: 200px;
+}
+
+.dest{
+    background-image: url("../Rat\ In\ Maze/Dest.png");
+    background-size: contain;
+}
+
+.rat {
+    background-image: url("../Rat\ In\ Maze/Rat.png");
+    background-size: contain;
+}
+
+.destRat {
+    background-image: url("../Rat\ In\ Maze/.DestRat.png");
+    background-size: contain;
+}
+
+.street {
+    background-image: url("../Rat\ In\ Maze/Road.png");
+    background-size: contain;
+}
+.wall {
+    background-image: url("../Rat\ In\ Maze/block.png");
+    background-size: contain;
+}
+.tileBox {
+    display: flex;
+}
