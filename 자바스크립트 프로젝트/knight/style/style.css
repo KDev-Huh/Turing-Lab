@@ -1,0 +1,36 @@
+
+.cellBox {
+    display: flex;
+}
+
+.cell {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80px;
+    height: 80px;
+    font-size: 24pt;
+    font-weight: 900;
+}
+
+.darkTile {
+    color: white;
+    background-image: url(../Knight\ Tour/darkCell.png);
+    background-size: contain;
+}
+
+.brightTile {
+    color: black;
+    background-image: url(../Knight\ Tour/brightCell.png);
+    background-size: contain;
+}
+
+.darkTileK {
+    background-image: url(../Knight\ Tour/darkCellK.png);
+    background-size: contain;
+}
+
+.brightTileK {
+    background-image: url(../Knight\ Tour/brightCellK.png);
+    background-size: contain;
+}
