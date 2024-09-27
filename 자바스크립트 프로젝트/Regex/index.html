@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .form {
+            font-size: 14pt;
+            margin-top: 30px;
+        }
+        .row {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            margin-top: 5px;
+            margin-bottom: 5px;
+        }
+        .control {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            margin-top: 25px;
+            margin-bottom: 5px;
+        }
+        .control > button {
+            margin-left: 10pt;
+            width: 80pt;
+            height: 25pt;
+            font-weight: 600;
+            font-size: 10pt;
+        }
+        .label {
+            width: 150px;
+            text-align: right;
+            margin-right: 10px;
+        }
+        input{
+            padding: 5pt 5pt 5pt 5pt;
+            width: 200px;
+        }
+        input::placeholder {
+            font-size: 12pt;
+        }
+    </style>
+</head>
+<body>
+    <div class="form">
+        <div class="row">
+            <label for="inputID" class="label">ID: </label>
+            <input type="text" placeholder="Input Your ID" id="inputID" value="huhon">
+        </div>
+        <div class="row">
+            <label for="inputPWD">PASSWORD: </label>
+            <input type="password" placeholder="Input Your Password" id="inputPWD" value="hugerich77">
+        </div>
+        <div class="row">
+            <label for="inputCP" class="label">Cellphone: </label>
+            <input type="text" placeholder="Input Your CellphoneNo." id="inputCP" value="+82(010) 8978-0875">
+        </div>
+        <div class="row">
+            <label for="inputEmail" class="label">E-mail: </label>
+            <input type="text" placeholder="Enput Your E-mail." id="inputEmail" value="huhonmcmc@gmail.com">
+        </div>
+        <div class="control">
+            <input type="button" value="Enrol" id="btnEnrol">
+            <input type="button" value="Cancel" id="btnCancel">
+        </div>
+    </div>
+    <script src="./script/script.js"></script>
+</body>
+</html>
