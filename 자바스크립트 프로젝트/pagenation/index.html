@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="style/main.css">
+</head>
+<body>
+    <main>
+        <h1>Pagination with Vanilla JavaScript</h1>
+        <ul id="pagindated-list" data-current-page="1" aria-live="polite">
+        </ul>
+
+        <nav class="pagination-container">
+            <button class="pagination-button" id="prev-button" aria-label="Previous page" title="Previous page"> <!-- aria는 시각장애인을 위한것 -->
+                &lt;
+            </button>
+
+            <div id="pagination-numbers"></div>
+
+            <button class="pagination-button" id="next-button" aria-label="Next page" title="Next page">
+                &gt;
+            </button>
+        </nav>
+    </main>
+
+    <footer>
+        Code by TuringLab.
+    </footer>
+</body>
+<script type="module" src="script/script.js"></script>  <!-- module은 data.js를 불러오기 위해서 -->
+</html>
