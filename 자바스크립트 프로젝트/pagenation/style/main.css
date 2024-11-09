@@ -1,0 +1,9 @@
+#pagination-container {
+    display: flex;
+    justify-content: center;
+}
+
+#pagination-numbers {
+    display: inline-block;
+    width: 10%;
+}

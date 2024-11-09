@@ -6,20 +6,30 @@ let nextBtn = document.getElementById("next-button");
 let pageBtns = document.getElementById("pagination-numbers");
 
 let countPage = 0;
-let pageNum = 1;
+let pageNum = 0;
+const MAX_DATA = Math.floor(data.length/10);
 
-//  작성중....
-// function setNumBtn() {
-//     for(let i = pageNum; )
-//     let Btn = document.createElement("button");
-//     Btn.value = 
-// }
+
+function setNumBtn() {
+    pageBtns.innerHTML = '';
+    for(let i = pageNum; i < pageNum + 5; i++) {
+        if(i > MAX_DATA)
+            break;
+        let Btn = document.createElement("button");
+        Btn.innerText = i + 1;
+        Btn.addEventListener("click", () => {
+            countPage = 10 * i;
+            createWrite();
+        })
+        pageBtns.appendChild(Btn);
+    }
+}
 
 function setBtn(beforeBtn, nextBtn) {
-    if(countPage < 10) {
+    if(pageNum < 5) {
         beforeBtn.disabled = true;
         nextBtn.disabled = false;
-    } else if(countPage + 10 > data.length) {
+    } else if(pageNum+5 >= MAX_DATA) {
         beforeBtn.disabled = false;
         nextBtn.disabled = true;
     } else {
@@ -29,9 +39,10 @@ function setBtn(beforeBtn, nextBtn) {
 }
 
 function createWrite() {
-    setBtn(beforeBtn, nextBtn);
-
+    input_pages.innerHTML = '';
     for(let i = countPage; i <= countPage+10; i++) {
+        if(data[i] == undefined)
+            break;
         let li = document.createElement("li");
         li.innerText = data[i];
         input_pages.appendChild(li);
@@ -39,15 +50,17 @@ function createWrite() {
 }
 
 beforeBtn.addEventListener("click", ()=> {
-    countPage-=10;
-    input_pages.innerHTML = '';
-    createWrite();
+    pageNum-=5;
+    setNumBtn();
+    setBtn(beforeBtn, nextBtn);
 })
 
 nextBtn.addEventListener("click", ()=> {
-    countPage+=10;
-    input_pages.innerHTML = '';
-    createWrite();
-})
+    pageNum+=5;
+    setNumBtn();
+    setBtn(beforeBtn, nextBtn);
+});
 
+setNumBtn();
+setBtn(beforeBtn, nextBtn);
 createWrite();
