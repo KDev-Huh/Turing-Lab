@@ -20,7 +20,7 @@ void ofApp::update(){
 
 //--------------------------------------------------------------
 void ofApp::draw(){
-	ofSetCircleResolution(60);		// ¿ø µÑ·¹¿¡ ÀÖ´Â Á¡ °¹¼ö °¢ Á¡À» ¼±À¸·Î ÀÕ´Â´Ù.
+	ofSetCircleResolution(60);		// ì› ë‘˜ë ˆì— ìˆëŠ” ì  ê°¯ìˆ˜ ê° ì ì„ ì„ ìœ¼ë¡œ ì‡ëŠ”ë‹¤.
 	ofBackground(255);
 	for (auto mover : movers) {
 		mover.draw();

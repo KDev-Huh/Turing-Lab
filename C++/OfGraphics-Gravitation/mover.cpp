@@ -1,8 +1,8 @@
 #include "mover.h"
 
-// Çì´õ ÆÄÀÏ°ú cppÆÄÀÏÀ» ³ª´©´Â ÀÌÀ¯ ->
-// ¶óÀÌºê·¯¸®·Î Àü´ŞÇÒ¶§ Çì´õÆÄÀÏÀ» º¸°í °³¹ß ¹× ÄÄÆÄÀÏ ÁøÇàÇÏ°í ½ÇÁ¦ ÄÚµå´Â ±â°è¾î·Î ³Ñ¾î°¨
-// Áï ¾È¿¡ ¼Ò½ºÄÚµå Ä¸½¶È­ °¡´É
+// í—¤ë” íŒŒì¼ê³¼ cppíŒŒì¼ì„ ë‚˜ëˆ„ëŠ” ì´ìœ  ->
+// ë¼ì´ë¸ŒëŸ¬ë¦¬ë¡œ ì „ë‹¬í• ë•Œ í—¤ë”íŒŒì¼ì„ ë³´ê³  ê°œë°œ ë° ì»´íŒŒì¼ ì§„í–‰í•˜ê³  ì‹¤ì œ ì½”ë“œëŠ” ê¸°ê³„ì–´ë¡œ ë„˜ì–´ê°
+// ì¦‰ ì•ˆì— ì†ŒìŠ¤ì½”ë“œ ìº¡ìŠí™” ê°€ëŠ¥
 
 Mover::Mover(float x, float y, float m)
 	: position(ofVec2f(x, y))
@@ -13,13 +13,13 @@ Mover::Mover(float x, float y, float m)
 
 void Mover::applyForce(ofVec2f force)
 {
-	ofVec2f f = force / mass;		// ÈûÀ» ¹Ş¾Æ¼­ °¡¼Óµµ ±¸ÇÏ±â
+	ofVec2f f = force / mass;		// í˜ì„ ë°›ì•„ì„œ ê°€ì†ë„ êµ¬í•˜ê¸°
 	acceleration += f;
 }
 
 void Mover::update()
 {
-	velocity += acceleration;		// °¡¼Óµµ¸¦ ¼Óµµ¿¡ ´õÇÔ
+	velocity += acceleration;		// ê°€ì†ë„ë¥¼ ì†ë„ì— ë”í•¨
 	position += velocity;
 	acceleration *= 0;
 }

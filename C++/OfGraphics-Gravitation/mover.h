@@ -4,13 +4,13 @@
 
 class Mover {
 public:
-	float mass;		// Áú·®
-	float radius;	// ¹İÁö¸§
-	ofVec2f position;		// À§Ä¡
-	ofVec2f velocity;		// ¼Óµµ
-	ofVec2f acceleration;	// °¡¼Óµµ
+	float mass;		// ì§ˆëŸ‰
+	float radius;	// ë°˜ì§€ë¦„
+	ofVec2f position;		// ìœ„ì¹˜
+	ofVec2f velocity;		// ì†ë„
+	ofVec2f acceleration;	// ê°€ì†ë„
 
-	// ofVec2f => 2Â÷¿ø ¹éÅÍ Å¬·¡½º(3Â÷¿øÀº ofVec3f)
+	// ofVec2f => 2ì°¨ì› ë°±í„° í´ë˜ìŠ¤(3ì°¨ì›ì€ ofVec3f)
 
 	Mover(float x, float y, float m);
 	void applyForce(ofVec2f force);
