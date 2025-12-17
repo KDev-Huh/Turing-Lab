@@ -14,10 +14,14 @@ struct Brick {
 		, hp(hpi) { }
 	bool alive() const { return hp > 0; }
 	void draw() const {
-		ofPushStyle();
 		if (!alive()) return;
+
+		ofPushStyle();
+
+		ofFill();
 		ofSetColor(color);
 		ofDrawRectangle(rect);
+
 		ofNoFill();
 		ofSetColor(0);
 		ofDrawRectangle(rect);
@@ -27,7 +31,7 @@ struct Brick {
 
 struct Paddle {
 	ofRectangle rect;
-	float speed = 360.f;
+	float speed = 380.f;
 
 	void init() {
 		rect.width = 120;
@@ -53,10 +57,10 @@ struct Ball {
 	ofVec2f pos;
 	ofVec2f vel;
 	float radius = 9;
-	float speed = 300;
+	float speed = 200;
 	bool moving = false;
 
-	void init(const ofRectangle& rect) {
+	void init(const ofRectangle & rect) {
 		float x = rect.x + rect.width * 0.5;
 		float y = rect.y - 2 - radius;
 
@@ -68,7 +72,7 @@ struct Ball {
 
 	void draw() const {
 		ofPushMatrix();
-		ofSetCircleResolution(32);		// ¿ø ¸¸µé¶§ Âï´Â Á¡ÀÇ °¹¼ö
+		ofSetCircleResolution(32); // ¿ø ¸¸µé¶§ Âï´Â Á¡ÀÇ °¹¼ö
 		ofFill();
 		ofSetColor(255);
 		ofDrawCircle(pos, radius);
@@ -87,7 +91,7 @@ struct ItemInstance {
 	std::string type;
 	bool active = false;
 
-	void activate(int _id, float x, float y, const std::string& t) {
+	void activate(int _id, float x, float y, const std::string & t) {
 		id = _id;
 		rect.set(x - 10, y - 10, 20, 20);
 		type = t;
@@ -108,8 +112,8 @@ struct ItemInstance {
 
 		ofFill();
 		ofDrawRectangle(rect);
-		ofSetColor(0);
-		ofDrawRectangle(rect);
+		/*ofSetColor(0);
+		ofDrawRectangle(rect);*/
 		ofPopStyle();
 	}
 };
@@ -122,8 +126,7 @@ struct Particle {
 	float ttl = 0;
 	ofColor color;
 
-	void activate(float x, float y, const ofColor& c)
-	{
+	void activate(float x, float y, const ofColor & c) {
 		active = true;
 		pos.set(x, y);
 
@@ -158,9 +161,9 @@ struct Particle {
 	}
 };
 
-class ofApp : public ofBaseApp{
+class ofApp : public ofBaseApp {
 
-	public:
+public:
 	void setup();
 	void update();
 	void draw();
@@ -168,8 +171,12 @@ class ofApp : public ofBaseApp{
 	void keyPressed(int key);
 	void keyReleased(int key);
 
-	void launchBall(Ball& ball);
+	void launchBall(Ball & ball);
 	bool collideWithBallAndRect(const ofRectangle & rect, const Ball & ball);
+
+	void resetGame();
+	void resetLevel();
+	void spawnItem(ofVec3f d);
 
 	Paddle paddle;
 	bool moveLeft;
@@ -187,9 +194,13 @@ class ofApp : public ofBaseApp{
 	vector<Particle> particlePool;
 
 	deque<ofVec2f> paddleTrail;
+	const int BASE_ROWS = 4;
 	int live = 3;
 	int score = 0;
 	int level = 1;
+
+	float prevPaddleX = 0.f;
+	float paddleVelX = 0.f;
 
 	ofTrueTypeFont font;
 	ofSoundPlayer bounceSound, loseLifeSound, brickSound, wallSound;
